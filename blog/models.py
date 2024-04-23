@@ -20,4 +20,8 @@ class Posts(models.Model):
     content = RichTextUploadingField(null=False, blank=False)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     category = MultiSelectField(choices=CATEGORY_OPTIONS, max_choices=5, max_length=10, null=False)
+    publish = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
